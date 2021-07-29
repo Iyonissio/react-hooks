@@ -14,6 +14,12 @@ export default function App() {
     setRepositorios(data);
   }, []);
 
+  useEffect(() => {
+    const filtered = repositorios.filter(repo => repo.favorite);
+
+    document.title = `Voce tem ${filtered.length} favoritos`;
+  }, [repositorios]);
+
   //function handleAddRepositorio() {
     //setRepositorios([...repositorios, 
      // { id: Math.random(), name: "Novo repo"} 
@@ -23,7 +29,6 @@ export default function App() {
      const newRepositorios = repositorios.map(repo => {
         return repo.id === id ? { ...repo, favorite: !repo.favorite } : repo
      });
-
      setRepositorios(newRepositorios);
   }
 
@@ -42,5 +47,8 @@ export default function App() {
         //    Adicionar Repositorio
         //</button>
  //      </>
+
+
+
   );
 }
